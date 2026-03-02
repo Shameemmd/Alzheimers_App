@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alzheimer's Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4e73df;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2e59d9;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74a3b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Alzheimer's Disease Prediction</h2>
+
+    <form action="/predict" method="post">
+        <input type="text" name="FunctionalAssessment" placeholder="Functional Assessment" required>
+        <input type="text" name="ADL" placeholder="ADL Score" required>
+        <input type="text" name="MMSE" placeholder="MMSE Score" required>
+        <input type="text" name="MemoryComplaints" placeholder="Memory Complaints (0/1)" required>
+        <input type="text" name="BehavioralProblems" placeholder="Behavioral Problems (0/1)" required>
+        <input type="text" name="PhysicalActivity" placeholder="Physical Activity Level" required>
+        <input type="text" name="CholesterolHDL" placeholder="Cholesterol HDL" required>
+        <input type="text" name="SleepQuality" placeholder="Sleep Quality" required>
+        <input type="text" name="CholesterolTriglycerides" placeholder="Triglycerides" required>
+        <input type="text" name="CholesterolTotal" placeholder="Total Cholesterol" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            Prediction: {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
